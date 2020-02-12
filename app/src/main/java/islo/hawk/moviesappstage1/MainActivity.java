@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
 
     //first commit after placement
     //second commit
-
+// third commit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
