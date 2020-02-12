@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     private RecyclerView recyclerView;
     private  GridLayoutManager gridLayoutManager;
 
-
+//comment from the github
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
