@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     private  GridLayoutManager gridLayoutManager;
 
 
-    //fist commit after placement
+    //first commit after placement
+    //second commit
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
