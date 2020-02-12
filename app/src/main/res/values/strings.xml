@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MoviesAppStage1</string>
+    <string name="popular_movies_title">Popular movies</string>
+    <string name="toprated_movies_title">Top rated movies</string>
+
+</resources>
+
