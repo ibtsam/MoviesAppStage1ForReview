@@ -9,6 +9,12 @@ public  class HardcodedData {
 
     //json object strings
     private static String ORIGINAL_TITLE= "original_title" ;
+
+    public static String getPosterPath() {
+        return POSTER_PATH;
+    }
+
+    private static String POSTER_PATH = "poster_path";
     private static String BACKDROP_PATH = "backdrop_path";
     private static String OVERVIEW = "overview";
     private static String VOTE_AVERAGE = "vote_average";

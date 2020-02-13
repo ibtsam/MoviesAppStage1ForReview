@@ -24,11 +24,12 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import islo.hawk.moviesappstage1.utilities.HardcodedData;
+import islo.hawk.moviesappstage1.utilities.Movie;
 import islo.hawk.moviesappstage1.utilities.NetworkUtils;
 
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.MoviesAdapterOnClickHandler {
    private ArrayList<String> posterArrylist=new ArrayList<>();
-    private ArrayList moviesArraylist;
+    private ArrayList<Movie> moviesArraylist;
     private MoviesAdapter moviesAdapter;
     private RecyclerView recyclerView;
     private  GridLayoutManager gridLayoutManager;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
 
 
         recyclerView.setLayoutManager(gridLayoutManager);
-        moviesAdapter = new MoviesAdapter(posterArrylist,this,this);
+        moviesAdapter = new MoviesAdapter(moviesArraylist,this,this);
 
 
       recyclerView.setAdapter(moviesAdapter);
@@ -61,12 +62,13 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     }
 
     @Override
-    public void onClick(String moviesHandler) {
+    public void onClick(int moviesHandler) {
         Context context = this;
 
-        JSONObject dataset = (JSONObject) moviesArraylist.get(Integer.parseInt(moviesHandler));
+     //   JSONObject dataset = (JSONObject) moviesArraylist.get(Integer.parseInt(moviesHandler));
         Intent intent = new Intent(MainActivity.this,MoviesDetails.class);
-        intent.putExtra("object", String.valueOf(dataset));
+        intent.putExtra("movieObject",moviesArraylist.get(moviesHandler));
+     //   intent.putExtra("object", moviesArraylist.get(Integer.parseInt(moviesHandler)));
             startActivity(intent);
 
 
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
 
     private  class BgTasks extends AsyncTask<String,Void,String[]>{
 
-        NetworkUtils networkUtils =new NetworkUtils();
+      //  NetworkUtils networkUtils =new NetworkUtils();
         @Override
         protected void onPreExecute() {
 
@@ -90,22 +92,29 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         protected String[] doInBackground(String... strings) {
 
             String movieType=strings[0];
-            URL movieUrl= networkUtils.buildUrl(movieType);
+            URL movieUrl= NetworkUtils.buildUrl(movieType);
             try {
-                String jsonResponse = networkUtils.getResponseFromHttpUrl(movieUrl);
+                String jsonResponse = NetworkUtils.getResponseFromHttpUrl(movieUrl);
                 JSONObject mainJsonObject = new JSONObject(jsonResponse);
                 JSONArray mainJsonArray = mainJsonObject.optJSONArray(HardcodedData.getMainJsonobject());
 
                 for(int i =0;i<mainJsonArray.length();i++){
-                    moviesArraylist.add(mainJsonArray.getJSONObject(i));
-
-
+                  //  moviesArraylist.add(mainJsonArray.getJSONObject(i));
+                  JSONObject jsonObject=  mainJsonArray.getJSONObject(i);
+                 String orignalTitle=   jsonObject.optString(HardcodedData.getOriginalTitle());
+                   String jBackdroppath = jsonObject.optString(HardcodedData.getBackdropPath());
+                    String j_overview = jsonObject.optString(HardcodedData.getOVERVIEW());
+                    String j_voteaverage = jsonObject.optString(HardcodedData.getVoteAverage());
+                    String j_releasedate = jsonObject.optString(HardcodedData.getReleaseDate());
+                    String j_posterpath = jsonObject.optString(HardcodedData.getPosterPath());
+                    Movie movie = new Movie(orignalTitle,j_releasedate,j_voteaverage,j_overview,jBackdroppath,j_posterpath);
+                    moviesArraylist.add(movie);
                 }
-                for(int x=0;x<moviesArraylist.size();x++){
-                    JSONObject innerJsonObject= (JSONObject) moviesArraylist.get(x);
-                   posterArrylist.add(HardcodedData.getBackdropImageBaseurl()+HardcodedData.getBackdropImageSize()+innerJsonObject.optString("poster_path"));
-
-                }
+//                for(int x=0;x<moviesArraylist.size();x++){
+//                    JSONObject innerJsonObject= (JSONObject) moviesArraylist.get(x);
+//                   posterArrylist.add(HardcodedData.getBackdropImageBaseurl()+HardcodedData.getBackdropImageSize()+innerJsonObject.optString("poster_path"));
+//
+//                }
                 Log.d("jsonArrayLength",String.valueOf(mainJsonArray.length()));
 
             } catch (IOException e) {
