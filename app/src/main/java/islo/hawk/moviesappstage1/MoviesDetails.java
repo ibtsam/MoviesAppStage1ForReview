@@ -17,7 +17,6 @@ public class MoviesDetails extends AppCompatActivity {
     public TextView movieTitle;
     TextView releaseDate, voteAverage, overview;
     ImageView backdropImage;
-    private String jBackdroppath;
 //    @BindView(R.id.movie_title) TextView movieTitle;
 //    @BindView(R.id.release_date) TextView releaseDate;
 //    @BindView(R.id.vote_average) TextView voteAverage;
@@ -45,24 +44,6 @@ public class MoviesDetails extends AppCompatActivity {
         voteAverage.setText(movie.getVoteAverage());
         overview.setText(movie.getOverview());
 
-        // JSONObject jsonObject = new JSONObject(getIntent().getParcelableExtra("object"));
-
-        //       try {
-//            JSONObject jsonObject = new JSONObject(getIntent().getStringExtra("object"));
-//            String j_title = jsonObject.optString(HardcodedData.getOriginalTitle());
-//            jBackdroppath = jsonObject.optString(HardcodedData.getBackdropPath());
-//            String j_overview = jsonObject.optString(HardcodedData.getOVERVIEW());
-//            String j_voteaverage = jsonObject.getString(HardcodedData.getVoteAverage());
-//            String j_releasedate = jsonObject.getString(HardcodedData.getReleaseDate());
-//            movieTitle.setText(j_title);
-//            releaseDate.setText(j_releasedate);
-//            voteAverage.setText(j_voteaverage);
-//            overview.setText(j_overview);
-
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
 
         Picasso.get()
                 .load(HardcodedData.getBackdropImageBaseurl() + HardcodedData.getBackdropImageSize() + movie.getBackdropImage())

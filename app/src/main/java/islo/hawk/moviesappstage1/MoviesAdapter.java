@@ -51,7 +51,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdap
 
 
         Movie movie = moviesArraylist.get(position);
-        // movie.getBackdropImage()
         Picasso.get()
                 .load(HardcodedData.getBackdropImageBaseurl() + HardcodedData.getBackdropImageSize() + movie.getPosterImage())
                 .into(holder.posterImageView);
@@ -80,7 +79,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdap
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            //   String images = moviesArraylist.get(adapterPosition);
             moviesAdapterOnClickHandler.onClick(adapterPosition);
 
 
