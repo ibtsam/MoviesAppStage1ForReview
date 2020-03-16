@@ -12,5 +12,11 @@
         android:orderInCategory="2"
 
         />
+    <item android:id="@+id/fav_movies"
+        android:title="@string/fav_movie_title"
+        android:orderInCategory="3"
+
+        />
+
 
 </menu>

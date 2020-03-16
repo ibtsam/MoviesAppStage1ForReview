@@ -1,19 +1,44 @@
 package islo.hawk.moviesappstage1.utilities;
 
-public  class HardcodedData {
+public class HardcodedData {
+
+
+    private static String id = "id";
     private static String MAIN_JSONOBJECT = "results";
-    private static String BACKDROP_IMAGE_BASEURL= "http://image.tmdb.org/t/p/";
+    private static String BACKDROP_IMAGE_BASEURL = "https://image.tmdb.org/t/p/";
     private static String BACKDROP_IMAGE_SIZE = "w185";
     private static String TOP_RATED = "top_rated";
     private static String POPULAR = "popular";
 
+    public static String getBaseurlFortrailerReview() {
+        return BASEURL_FORTRAILER_REVIEW;
+    }
+
+    private static String BASEURL_FORTRAILER_REVIEW = "https://api.themoviedb.org/3/";
+
+    public static String getMovie() {
+        return movie;
+    }
+
+    private static String movie = "movie";
+
     //json object strings
-    private static String ORIGINAL_TITLE= "original_title" ;
+    private static String ORIGINAL_TITLE = "original_title";
 
     public static String getPosterPath() {
         return POSTER_PATH;
     }
 
+    public static String getCONTENT() {
+        return CONTENT;
+    }
+
+    public static String getYoutubeBaseurl() {
+        return YOUTUBE_BASEURL;
+    }
+
+    public static String YOUTUBE_BASEURL = "https://www.youtube.com/watch?v=";
+    private static String CONTENT = "content";
     private static String POSTER_PATH = "poster_path";
     private static String BACKDROP_PATH = "backdrop_path";
     private static String OVERVIEW = "overview";
@@ -22,6 +47,10 @@ public  class HardcodedData {
 
     public static String getKeywordApikey() {
         return KEYWORD_APIKEY;
+    }
+
+    public static String getId() {
+        return id;
     }
 
     private static String KEYWORD_APIKEY = "api_key";
@@ -34,7 +63,7 @@ public  class HardcodedData {
         return API_KEY;
     }
 
-    private static String BASE_URL ="https://api.themoviedb.org/3/movie/";
+    private static String BASE_URL = "https://api.themoviedb.org/3/movie/";
     private static String API_KEY = "57bab8e2dada3ace8377a2be57c3ab03";
 
     public static String getMainJsonobject() {

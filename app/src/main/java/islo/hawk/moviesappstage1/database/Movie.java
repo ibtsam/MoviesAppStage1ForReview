@@ -1,10 +1,17 @@
-package islo.hawk.moviesappstage1.utilities;
+package islo.hawk.moviesappstage1.database;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "movie_table")
 public class Movie implements Parcelable {
 
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String movieTitle;
     private String releaseDate;
     private String voteAverage;
@@ -12,7 +19,12 @@ public class Movie implements Parcelable {
     private String backdropImage;
     private String posterImage;
 
+    public int getId() {
+        return id;
+    }
+
     protected Movie(Parcel in) {
+        id = in.readInt();
         movieTitle = in.readString();
         releaseDate = in.readString();
         voteAverage = in.readString();
@@ -41,7 +53,8 @@ public class Movie implements Parcelable {
         this.posterImage = posterImage;
     }
 
-    public Movie(String movieTitle, String releaseDate, String voteAverage, String overview, String backdropImage, String posterImage) {
+    public Movie(int id,String movieTitle, String releaseDate, String voteAverage, String overview, String backdropImage, String posterImage) {
+        this.id = id;
         this.movieTitle = movieTitle;
         this.releaseDate = releaseDate;
         this.voteAverage = voteAverage;
@@ -97,6 +110,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+       dest.writeInt(id);
         dest.writeString(movieTitle);
         dest.writeString(releaseDate);
         dest.writeString(voteAverage);

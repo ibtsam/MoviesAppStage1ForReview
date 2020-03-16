@@ -1,4 +1,4 @@
-package islo.hawk.moviesappstage1;
+package islo.hawk.moviesappstage1.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,8 +13,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import islo.hawk.moviesappstage1.R;
 import islo.hawk.moviesappstage1.utilities.HardcodedData;
-import islo.hawk.moviesappstage1.utilities.Movie;
+import islo.hawk.moviesappstage1.database.Movie;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdapterViewHolder> {
 
