@@ -2,6 +2,10 @@
     <string name="app_name">MoviesAppStage1</string>
     <string name="popular_movies_title">Popular movies</string>
     <string name="toprated_movies_title">Top rated movies</string>
-
+    <string name="fav_movie_title"> Favourites</string>
+    <string name="watch_trailer">Watch Trailer</string>
+    <string name="mark_favourite">Mark Favourite</string>
+    <string name="already_favourite">Tap to unfavourite</string>
+    <string name="movie_images">Movie images</string>
 </resources>
 

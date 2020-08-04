@@ -1,6 +1,7 @@
-package islo.hawk.moviesappstage1.utilities;
+package islo.hawk.moviesappstage1.NetworkCalls;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,12 +10,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-public final class NetworkUtils {
+import islo.hawk.moviesappstage1.utilities.HardcodedData;
+
+public  final class NetworkUtils {
      public NetworkUtils(){
 throw new AssertionError();
     }
 
-    public  URL buildUrl(String kindOfMovies){
+    public  static URL buildUrl(String kindOfMovies){
         Uri builtUri = Uri.parse(HardcodedData.getBaseUrl()).buildUpon()
                 .appendPath(kindOfMovies)
                 .appendQueryParameter(HardcodedData.getKeywordApikey(),HardcodedData.getApiKey()).build();
@@ -30,7 +33,7 @@ throw new AssertionError();
     }
 
 
-    public String getResponseFromHttpUrl(URL url) throws IOException {
+    public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             InputStream in = urlConnection.getInputStream();
